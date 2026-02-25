@@ -12,7 +12,7 @@ def dfs_recursive(graph, start, visited=None, order=None):
     visited.add(start)
     order.append(start)
 
-    for neighbor in graph.get_neighbors(start):
+    for neighbor, _ in graph.get_neighbors(start):
         if neighbor not in visited:
             dfs_recursive(graph, neighbor, visited, order)
 
@@ -36,8 +36,7 @@ def dfs_iterative(graph, start):
             visited.add(vertex)
             order.append(vertex)
 
-            # Reverse neighbors to match recursive ordering
-            for neighbor in reversed(graph.get_neighbors(vertex)):
+            for neighbor, _ in reversed(graph.get_neighbors(vertex)):
                 if neighbor not in visited:
                     stack.append(neighbor)
 

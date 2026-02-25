@@ -17,7 +17,7 @@ def bfs(graph, start):
         vertex = queue.popleft()
         order.append(vertex)
 
-        for neighbor in graph.get_neighbors(vertex):
+        for neighbor, _ in graph.get_neighbors(vertex):
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append(neighbor)

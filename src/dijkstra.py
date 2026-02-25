@@ -1,0 +1,22 @@
+import heapq
+
+def dijkstra(graph, start):
+    distances = {v: float("inf") for v in graph.get_vertices()}
+    distances[start] = 0
+
+    pq = [(0, start)]
+
+    while pq:
+        current_distance, current_vertex = heapq.heappop(pq)
+
+        if current_distance > distances[current_vertex]:
+            continue
+
+        for neighbor, weight in graph.get_neighbors(current_vertex):
+            distance = current_distance + weight
+
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+
+    return distances
